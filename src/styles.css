@@ -1,12 +1,10 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: linear-gradient(to right, #58EFEC, #C481A7);
+  background: linear-gradient(to right, #58EFEC, #E85C90);
 }
 
 .calculator-grid {
@@ -17,7 +15,7 @@ body {
   grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
 }
 
-.calculator-grid>button {
+.calculator-grid > button {
   cursor: pointer;
   font-size: 2rem;
   border: 1px solid white;
@@ -25,18 +23,18 @@ body {
   background-color: rgba(255, 255, 255, .75);
 }
 
-.calculator-grid>button:hover,
-.calculator-grid>button:focus {
+.calculator-grid > button:hover,
+.calculator-grid > button:focus {
   background-color: rgba(255, 255, 255, .9);
 }
 
-.blocks2 {
+.span-two {
   grid-column: span 2;
 }
 
 .output {
   grid-column: 1 / -1;
-  background-color: rgba(47, 202, 216, 0.75);
+  background-color: rgba(0, 0, 0, .75);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
