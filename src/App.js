@@ -1,13 +1,13 @@
 import { useReducer } from "react"
-import DigitButton from "./components/DigitButton"
-import OperationButton from "./components/OperationButton"
-import "./styles.css"
+import DigitButton from "./components/Digit"
+import OperationButton from "./components/Operation"
+import "./App.css"
 
 export const ACTIONS = {
-  ADD_DIGIT: "add-digit",
-  CHOOSE_OPERATION: "choose-operation",
+  ADD_DIGIT: "print",
+  CHOOSE_OPERATION: "operation",
   CLEAR: "clear",
-  DELETE_DIGIT: "delete-digit",
+  DELETE_DIGIT: "delete",
   EVALUATE: "evaluate",
 }
 
@@ -95,13 +95,18 @@ function reducer(state, { type, payload }) {
         currentOperand: evaluate(state),
       }
     default:
+      break
   }
 }
 
 function evaluate({ currentOperand, previousOperand, operation }) {
   const prev = parseFloat(previousOperand)
   const current = parseFloat(currentOperand)
-  if (isNaN(prev) || isNaN(current)) return ""
+
+  if (isNaN(prev) || isNaN(current)) {
+    return ""
+  }
+
   let computation = ""
   switch (operation) {
     case "+":
@@ -123,14 +128,14 @@ function evaluate({ currentOperand, previousOperand, operation }) {
   return computation.toString()
 }
 
-const INTEGER_FORMATTER = new Intl.NumberFormat("en-us", {
+const IntegerFormat = new Intl.NumberFormat("en-us", {
   maximumFractionDigits: 0,
 })
 function formatOperand(operand) {
   if (operand == null) return
   const [integer, decimal] = operand.split(".")
-  if (decimal == null) return INTEGER_FORMATTER.format(integer)
-  return `${INTEGER_FORMATTER.format(integer)}.${decimal}`
+  if (decimal == null) return IntegerFormat.format(integer)
+  return `${IntegerFormat.format(integer)}.${decimal}`
 }
 
 function App() {
