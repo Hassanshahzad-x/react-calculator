@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useReducer } from "react";
 import "./App.css";
 
+function reducer(state,action) {
+  
+}
+
 function App() {
+  const [current,previous,operand] = useReducer(reducer, {})
   return (
     <div className="calculator-grid">
       <div className="output">
